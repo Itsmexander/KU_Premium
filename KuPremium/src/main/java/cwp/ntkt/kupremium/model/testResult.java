@@ -6,20 +6,15 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class User {
+public class testResult {
 
     @Id
     @GeneratedValue
+    private String PID;
+    private S
 
-    private String username;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String telNo;
-    private String email;
 }

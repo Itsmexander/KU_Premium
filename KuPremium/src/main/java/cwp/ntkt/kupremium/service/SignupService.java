@@ -30,7 +30,6 @@ public class SignupService {
         User record = modelMapper.map(user, User.class);
         record.setFirstName(user.getFirstName());
         record.setLastName(user.getLastName());
-        record.setRole(user.getRole());
         record.setUsername(user.getUsername());
 
         String hashedPassword = passwordEncoder.encode(user.getPassword());
