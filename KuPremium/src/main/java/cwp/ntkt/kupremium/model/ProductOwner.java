@@ -8,7 +8,8 @@ import javax.persistence.Entity;
 @Data
 @NoArgsConstructor
 @Entity
-public class ProductOwner extends User{
+public class ProductOwner extends
+        User{
     private String POID;
 
 

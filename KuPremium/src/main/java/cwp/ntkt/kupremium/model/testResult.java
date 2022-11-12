@@ -15,6 +15,6 @@ public class testResult {
     @Id
     @GeneratedValue
     private String PID;
-    private S
+    private
 
 }
