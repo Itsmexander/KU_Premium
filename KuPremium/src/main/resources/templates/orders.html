@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>The Premium @KU Website</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/myScript.js}"></script>
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2];
+                if (td)
+                {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().localeCompare(filter) === 0)
+                    {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<style>
+    body
+    {
+        /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+        background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('https://t4.ftcdn.net/jpg/02/22/17/97/360_F_222179720_h4HaoaN4ZSASTZ63GEZFLTzVnj9aElCl.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container container-fluid" style="background-color:white; margin-top:30px; margin-bottom: 30px; margin-left: auto ; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px; border-radius:10px;">
+    <h1 class="display-6" style="font-weight: bold">Approve Product</h1>
+
+    <table class="table table-striped table-bordered" style="padding-bottom: 30px">
+        <thead>
+        <div>
+            <tr scope="column">
+                <th>Date</th>
+                <th>Product-Name</th>
+                <th>Auditor Name</th>
+                <th>Auditor Phone</th>
+<!--                <th>Cakes</th>-->
+<!--                <th>Price</th>-->
+<!--                <th>Quantity</th>-->
+                <th>Status</th>
+                <th>Approved-Date</th>
+
+            </tr>
+        </div>
+        </thead>
+        <tbody>
+        <div th:each="order : ${cakeslist}">
+            <tr id="list" class="ord"  scope="row">
+
+                <td th:text="${order.date}"></td>
+                <td th:text="${order.name}"></td>
+                <td th:text="${order.address}"></td>
+                <td th:text="${order.mobile}"></td>
+<!--                <td >-->
+<!--                    <ul th:each="i : ${order.getCartList()}">-->
+<!--                        <span th:text="${i.getCakes().name}" style="margin-left: -30px"></span>-->
+<!--                    </ul>-->
+<!--                </td>-->
+<!--                <td >-->
+<!--                    <ul th:each="i : ${order.getCartList()}">-->
+<!--                        <span th:text="${i.getCakes().getPrice()}+ '&#3647;'" style="margin-left: -30px"></span>-->
+<!--                    </ul>-->
+<!--                </td>-->
+<!--                <td >-->
+<!--                    <ul th:each="i : ${order.getCartList()}">-->
+<!--                        <span th:text="${i.getQuantity()}" style="text-align: center"></span>-->
+<!--                    </ul>-->
+<!--                </td>-->
+                <td th:text="${order.status}"></td>
+                <td th:text="${order.payment}"></td>
+                <td sec:authorize="hasRole('USER')" style="text-align: center">
+                    <a th:href="@{/order/list/edit/{id}(id=${order.getOrderId()})}" ><button type="button" class="btn btn-success" style="margin-bottom: 5px">Approve</button>
+                    </a>
+                    <a th:href="@{/order/list/unapprove/{id}(id=${order.getOrderId()})}" ><button type="button" class="btn btn-warning" style="color: white">Unapproved</button><br>
+                    </a>
+                    <a th:href="@{/order/list/remove/{id}(id=${order.getOrderId()})}" ><button type="button" class="btn btn-danger">Delete</button>
+                    </a>
+                </td>
+<!--                <td sec:authorize="hasRole('USER')" style="text-align: center">-->
+<!--                    <a th:href="@{/order/list/edit/{id}(id=${order.getOrderId()})}" ><button type="button" class="btn btn-danger">Unapprove</button>-->
+<!--                    </a>-->
+<!--                </td>-->
+<!--                <td sec:authorize="hasRole('USER')" style="text-align: center">-->
+<!--                    <a th:href="@{/order/list/remove/{id}(id=${order.getOrderId()})}" ><button type="button" class="btn btn-danger">Delete</button>-->
+<!--                    </a>-->
+<!--                </td>-->
+            </tr>
+        </div>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

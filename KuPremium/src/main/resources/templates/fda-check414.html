@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Premium @KU Website</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link th:rel="stylesheet" th:href="@{/css/myStyle.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/myScript.js}"></script>
+</head>
+<style>
+    body
+    {
+        /*            background-image: url('https://wallpaperaccess.com/full/2029165.jpg');*/
+        background:url('https://cdn.discordapp.com/attachments/800934715573010436/1039196060406521916/f2f2f7.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    #login .container #login-row #login-column #login-box {
+        margin-top: 75px;
+        max-width: 1500px;
+        height: 350px;
+        border: 1px solid #9C9C9C;
+        border-radius: 25px;
+        background-color: #D9D9D9;
+    }
+    #login .container #login-row #login-column #login-box {
+        margin-top: 75px;
+        max-width: 1500px;
+        height: 350px;
+        border: 1px solid #9C9C9C;
+        border-radius: 25px;
+        background-color: #D9D9D9;
+    }
+
+</style>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container" style="background-color: whitesmoke; margin-top:35px ;padding-bottom: 20px ;border-radius: 25px;">
+    <h1 class="display-6 text-center" style="padding-left:-50px ; font-weight: bold; text-align:center; color: #dc3545 ;font-size: 45px ;margin-bottom: 50px; padding-top: 25px">ประกาศ อ.ย. ฉบับที่ 414</h1>
+
+    <form th:action="@{/cakes/add}" method="POST">
+        <div class="row mb-4">
+            <div class="col text-center">
+                <div class="mb-3">
+<!--                    <div class="form-group">-->
+<!--                        <label for="product-owner" class="text-black"><span>ประกาศ อ.ย. ฉบับที่ 356</span> <span><input id="product-owner" name="remember-me" type="checkbox"></span></label>-->
+<!--                    </div>-->
+                    <div id="check356-link" class="text-center">
+                        <a th:href="@{/cakes/check356}" class="text-danger">ประกาศ อ.ย. ฉบับที่ 356</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col text-center">
+                <div class="mb-3">
+<!--                    <div class="form-group">-->
+<!--                        <label for="KURDI" class="text-black"><span>ประกาศ อ.ย. ฉบับที่ 414</span> <span><input id="KURDI" name="remember-me" type="checkbox"></span></label>-->
+<!--                    </div>-->
+                    <div id="check414-link" class="text-center">
+                        <a th:href="@{/cakes/check414}" class="text-danger">ประกาศ อ.ย. ฉบับที่ 414</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col text-center">
+                <div class="mb-3">
+<!--                    <div class="form-group">-->
+<!--                        <label for="KU-premium-shop-employee" class="text-black"><span>ประกาศ อ.ย. ฉบับที่ 416</span> <span><input id="KU-premium-shop-employee" name="remember-me" type="checkbox"></span></label>-->
+<!--                    </div>-->
+                    <div id="check416-link" class="text-center">
+                        <a th:href="@{/cakes/check416}" class="text-danger">ประกาศ อ.ย. ฉบับที่ 416</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col text-center">
+                <div class="mb-3">
+<!--                    <div class="form-group">-->
+<!--                        <label for="customer" class="text-black"><span>ประกาศ อ.ย. ฉบับที่ 418</span> <span><input id="customer" name="remember-me" type="checkbox"></span></label>-->
+<!--                    </div>-->
+                    <div id="check418-link" class="text-center">
+                        <a th:href="@{/cakes/check418}" class="text-danger">ประกาศ อ.ย. ฉบับที่ 418</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col" >
+                <div class="form-outline">
+                    <label for="nameInput" class="form-label">เลขรหัสสินค้า</label>
+                    <input id="nameInput" type="text" class="form-control" name="productID"> <!--Name = ชื่อด้านหลังต้องตรงกับฟีลในโมเดล-->
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <label for="productInput" class="form-label">ชื่อสินค้าภาษาไทย</label>
+                    <input id="productInput" type="text" class="form-control" name="productPrice">
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="NAAFDA414Input" class="form-label">ชื่อผู้ตรวจสอบตามประกาศอ.ย. 414</label>
+            <input id="NAAFDA414Input" type="text" class="form-control" name="productCategory">
+        </div>
+
+        <div class="mb-3">
+            <label for="LeadSInput" class="form-label">เกณฑ์ผลการตรวจสารประกอบตะกั่ว</label>
+            <input id="LeadSInput" type="text" class="form-control" name="productCategory">
+        </div>
+
+        <div class="mb-3">
+            <label for="LeadRInput" class="form-label">ผลการตรวจสารประกอบตะกั่ว</label>
+            <input id="LeadRInput" type="text" class="form-control" name="productCategory">
+        </div>
+
+        <div class="mb-3">
+            <label for="LeadFInput" class="form-label">สรุปผลการตรวจสอบตะกั่ว</label>
+            <input id="LeadFInput" type="text" class="form-control" name="productCategory">
+        </div>
+
+        <div class="text-center" style="padding-top: 25px; padding-bottom: 25px">
+            <button type="submit" class="btn btn-danger">Check Product</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
