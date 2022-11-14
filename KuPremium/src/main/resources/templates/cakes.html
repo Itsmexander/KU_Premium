@@ -47,13 +47,13 @@
                                 <p class="card-text" style="text-align:left;" th:text="${'Product Quantity : ' + cakes.amount + ' Pieces' }">Amount</p>
                                 <p class="card-text" style="text-align:left;" th:text="${'Product Price : ' + cakes.price + ' Baht'}" th:value="${cakes.price}">Price</p>
 
-                                <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-light increase" th:onclick="decrementValue([[${cakes}]])"  value="-" style="border-style: hidden">-</button>
-                                <input  sec:authorize="hasRole('ADMIN')" type="number" style="text-align: center;border-style: hidden;background: none; position: center"   th:id="${cakes.id+'increase'}"  value="0" />
-                                <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-light" th:onclick="incrementValue([[${cakes}]])"  value="+" style="border-style: hidden; margin-left: -15px">+</button>
+<!--                                <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-light increase" th:onclick="decrementValue([[${cakes}]])"  value="-" style="border-style: hidden">-</button>-->
+<!--                                <input  sec:authorize="hasRole('ADMIN')" type="number" style="text-align: center;border-style: hidden;background: none; position: center"   th:id="${cakes.id+'increase'}"  value="0" />-->
+<!--                                <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-light" th:onclick="incrementValue([[${cakes}]])"  value="+" style="border-style: hidden; margin-left: -15px">+</button>-->
                                 <input hidden type="text" th:name="name" th:value="${cakes.id}">
-                                <input  hidden type="number" style="text-align: center;border-style: hidden;background:none;"  th:id="${cakes.id+'increase2'}" th:name="num" value="0" />
+                                <input hidden type="number" style="text-align: center;border-style: hidden;background:none;"  th:id="${cakes.id+'increase2'}" th:name="num" value="0" />
                             </div>
-                            <div>
+                        <div>
 
                                 <!-- ปุ่ม Edit สินค้า -->
 <!--                                <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.id})}" ><button type="button" class="btn btn-danger">Edit Product</button></a>-->
