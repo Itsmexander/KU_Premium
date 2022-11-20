@@ -6,20 +6,21 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class Register {
+public class ProductOwner {
 
     @Id
     @GeneratedValue
 
-    private String trackNum;
-    private String pID;
-    private LocalDateTime sentDate;
-    private String rName;
-    private String note;
-    private String status;
+    private String poID;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String telNo;
+    private String email;
+    private String address;
 }

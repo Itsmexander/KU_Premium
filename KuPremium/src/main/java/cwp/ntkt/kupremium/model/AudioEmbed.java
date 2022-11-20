@@ -6,20 +6,17 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class Register {
 
+public class AudioEmbed {
     @Id
     @GeneratedValue
-
-    private String trackNum;
+    private UUID uuid;
     private String pID;
-    private LocalDateTime sentDate;
-    private String rName;
-    private String note;
-    private String status;
+    private String audioID;
+    private String audioFilePath;
 }

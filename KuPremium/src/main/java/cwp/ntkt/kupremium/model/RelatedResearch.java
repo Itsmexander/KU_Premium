@@ -11,15 +11,12 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @Entity
-public class User {
 
+public class RelatedResearch {
     @Id
     @GeneratedValue
-
-    private String username;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String telNo;
-    private String email;
+    private UUID uuid;
+    private String pID;
+    private String relatedResearchID;
+    private String relatedResearchFilePath;
 }
