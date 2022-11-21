@@ -25,5 +25,4 @@ public class ProductInfo {
     private String productSize;
     private String productVolume;
     private String productWeight;
-
 }
