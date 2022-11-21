@@ -13,14 +13,15 @@ import javax.persistence.*;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "employee_seq")
     @GenericGenerator(
-            name = "user_seq",
-            strategy = "org.thoughts.on.java.generators.StringPrefixedSequenceIdGenerator",
+            name = "employee_seq",
+            strategy = "cwp.ntkt.kupremium.service.StringPrefixedSequenceIdGenerator",
             parameters = {
                     @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
                     @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "E"),
-                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d") })
+
     @Column(name = "Employee ID")
     private String employeeID;
     @Column(name = "Username")

@@ -1,0 +1,57 @@
+package cwp.ntkt.kupremium.controller;
+
+import cwp.ntkt.kupremium.model.ProductInfo;
+import cwp.ntkt.kupremium.service.ProductsService;
+import cwp.ntkt.kupremium.service.UserDetailsServiceImp;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
+
+@Controller
+@RequestMapping("/products")
+public class ProductController {
+        @Autowired
+        private ProductsService productsService;
+        @Autowired
+        private UserDetailsServiceImp userDetailsServiceImp;
+
+
+        @GetMapping("/edit/{id}")
+        public String getEditForm(@PathVariable UUID id, Model model) {
+            ProductInfo products = productsService.getOneById(id);
+            model.addAttribute("cakes", products);
+            return "cakes-edit";
+        }
+
+        @PostMapping("/edit")
+        public String edit(@ModelAttribute ProductInfo products, Model model) {
+            productsService.update(products);
+            return "redirect:/cakes";
+        }
+
+        @GetMapping
+        public String getCakes(Model model, Authentication authentication)
+        {
+            userDetailsServiceImp.setLoginUser(authentication.getDeclaringClass().getName()); //***
+            model.addAttribute("cakes", productsService.getAll());
+            return "cakes";
+        }
+
+        @GetMapping("/add")
+        public String getAddForm(){
+            // return rings-add.html
+            return "cakes-add";
+        }
+
+        @PostMapping("/add")
+        public String addCakes(@ModelAttribute ProductInfo products, Model model) {
+            // พอรับเข้ามาจะเอาเข้า List
+            productsService.addCakes(products);
+
+            return "redirect:/cakes";
+        }
+}
