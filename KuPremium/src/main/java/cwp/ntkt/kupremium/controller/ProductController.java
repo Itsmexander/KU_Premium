@@ -1,5 +1,6 @@
 package cwp.ntkt.kupremium.controller;
 
+import cwp.ntkt.kupremium.dto.SignupDto;
 import cwp.ntkt.kupremium.model.ProductInfo;
 import cwp.ntkt.kupremium.service.ProductsService;
 import cwp.ntkt.kupremium.service.UserDetailsServiceImp;
@@ -53,5 +54,33 @@ public class ProductController {
             productsService.addCakes(products);
 
             return "redirect:/cakes";
+        }
+
+        @GetMapping("/check356")
+        public String getFDA356Page() {
+            return "fda-check356"; // return signup.html
+        }
+
+        @GetMapping("/check414")
+        public String getFDA414Page() {
+            return "fda-check414"; // return signup.html
+        }
+
+        @GetMapping("/check416")
+        public String getFDA416Page() {
+            return "fda-check416"; // return signup.html
+        }
+
+        @GetMapping("/check418")
+        public String getFDA418Page() {
+            return "fda-check418"; // return signup.html
+        }
+        @GetMapping("/inspection")
+        public String getInspectionPage() {
+            return "inspection-data"; // return signup.html
+        }
+        @GetMapping("/audit_results")
+        public String getAuditPage() {
+            return "audit-results"; // return signup.html
         }
 }

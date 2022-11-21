@@ -25,9 +25,9 @@ public class UserDetailsServiceImp implements UserDetailsService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public void addUser(ProductOwner productOwner){
+    public void addUser(User user){
         String url = "http://localhost:8090/user";
-        restTemplate.postForObject(url, productOwner, ProductOwner.class);
+        restTemplate.postForObject(url, user, User.class);
     }
 
     private User user;
