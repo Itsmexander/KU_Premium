@@ -16,7 +16,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_seq")
     @GenericGenerator(
             name = "user_seq",
-            strategy = "org.thoughts.on.java.generators.StringPrefixedSequenceIdGenerator",
+            strategy = "cwp.ntkt.kupremium.service.StringPrefixedSequenceIdGenerator",
             parameters = {
                     @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
                     @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "C"),

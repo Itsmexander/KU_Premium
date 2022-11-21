@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsServiceImp userDetailsService;
+    UserDetailsServiceImp userDetailsServiceImp;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -40,6 +40,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID", "remember-me")
                 .permitAll();
+
+//        http.inMemoryAuthentication()
+//                .withUser("user").password(encoder().encode("user")).roles("ROLE_USER")
+//                .and()
+//                .withUser("user1").password(encoder().encode("user1")).roles("ROLE_USER")
+//                .and()
+//                .withUser("admin").password(encoder().encode("admin")).roles("ROLE_ADMIN");
     }
 
     @Bean
