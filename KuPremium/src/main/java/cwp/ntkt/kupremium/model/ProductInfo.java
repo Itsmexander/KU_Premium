@@ -5,17 +5,19 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class ProductInfo {
+public class ProductInfo implements Serializable {
     @Id
     private UUID pID;
     private String productName;
     private String productCategory;
     private double price;
+    @Id
     private String poID;
     private String productDescription;
     private String productAttrib;

@@ -8,13 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.UUID;
 
-@Data
-@NoArgsConstructor
-@Entity
+
 
 public class FoodTraceabilityEmbedVideo {
-    @Id
-    @GeneratedValue
+
     private UUID uuid;
     private String pID;
     private String foodTraceVidID;
