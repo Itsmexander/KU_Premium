@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/login*","/", "/home","/rings","/css/**","/js/**","/images/**","/order","/register","/contact","/detail").permitAll()
-                .antMatchers("/rings/**","order/**").hasRole("ADMIN")
+                .antMatchers("/rings/**","order/**").hasRole("PO")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("user1").password(passwordEncoder().encode("user1")).roles("USER")
                 .and()
-                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN");
+                .withUser("po").password(passwordEncoder().encode("po")).roles("PO");
     }
     @Bean
     public PasswordEncoder passwordEncoder() {

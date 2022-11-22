@@ -1,6 +1,9 @@
 package cwp.ntkt.kupremium.service;
 
-import cwp.ntkt.kupremium.repository.UserRepository;
+import cwp.ntkt.kupremium.model.ProductOwner;
+import cwp.ntkt.kupremium.model.User;
+import cwp.ntkt.kupremium.repository.PORepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -8,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import cwp.ntkt.kupremium.model.User;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -16,51 +18,50 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class UserDetailsServiceImp implements UserDetailsService {
-
+public class PODetailServiceImp implements UserDetailsService {
     @Autowired
-    private UserRepository userRepository;
+    private PORepository poRepository;
 
     @Autowired
     private RestTemplate restTemplate;
 
-    public void addUser(User user){
+    public void addUser(ProductOwner productOwner){
         String url = "http://localhost:8090/user";
-        restTemplate.postForObject(url, user, User.class);
+        restTemplate.postForObject(url, productOwner, User.class);
     }
 
-    private User user;
-    public List<User> getAll(){
+    private ProductOwner productOwner;
+    public List<ProductOwner> getAll(){
         String url = "http://localhost:8090/user";
-        ResponseEntity<User[]> response = restTemplate.getForEntity(url, User[].class);
-        User[] users = response.getBody();
-        return Arrays.asList(users);
+        ResponseEntity<ProductOwner[]> response = restTemplate.getForEntity(url, ProductOwner[].class);
+        ProductOwner[] productOwners = response.getBody();
+        return Arrays.asList(productOwners);
     }
 
     public void setLoginUser(String name){
         for(int i = 0 ; i <this.getAll().size();i++){
             if(name.equals(this.getAll().get(i).getUsername())){
-                user = this.getAll().get(i);
+                productOwner = this.getAll().get(i);
             }
         }
     }
-    public User getUser(){
-        return user;
+    public ProductOwner getUser(){
+        return productOwner;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+        ProductOwner productOwner = poRepository.findByUsername(username);
 
-        if (user == null) {
+        if (productOwner == null) {
             throw new UsernameNotFoundException("Could not find user");
         }
 
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(user.getRole()));
+        authorities.add(new SimpleGrantedAuthority(productOwner.getRole()));
 
         return new org.springframework.security.core.userdetails.User(
-                user.getUsername(), user.getPassword(), authorities);
+                productOwner.getUsername(), productOwner.getPassword(), authorities);
     }
 }
