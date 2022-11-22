@@ -5,6 +5,7 @@ import cwp.ntkt.kupremium.service.UserDetailsServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,5 +66,25 @@ public class LoginController {
             }
         }
         return true;
+    }
+
+    @GetMapping("/login")
+    public String getLoginPage() {
+        return "login"; // return signup.html
+    }
+
+    @GetMapping("/login_customer")
+    public String getLoginCustomerPage() {
+        return "login-customer"; // return signup.html
+    }
+
+    @GetMapping("/login_employee")
+    public String getLoginEmployeePage() {
+        return "login-employee"; // return signup.html
+    }
+
+    @GetMapping("/login_rdi")
+    public String getLoginRDIPage() {
+        return "login-rdi";
     }
 }
