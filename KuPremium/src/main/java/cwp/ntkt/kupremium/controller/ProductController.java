@@ -83,4 +83,19 @@ public class ProductController {
         public String getAuditPage() {
             return "audit-results"; // return signup.html
         }
+
+//        @GetMapping("/register_customer")
+//        public String getRegisterCustomerPage() {
+//            return "register-customer"; // return signup.html
+//        }
+//
+//        @GetMapping("/register_employee")
+//        public String getRegisterEmployeePage() {
+//            return "register-employee"; // return signup.html
+//        }
+//
+//        @GetMapping("/register_rdi")
+//        public String getRegisterRDIPage() {
+//            return "register-rdi"; // return signup.html
+//        }
 }
