@@ -58,7 +58,7 @@
 
   <label>
     <p class="label-txt">ENTER YOUR NAME</p>
-    <input type="text" class="input" th:name="name" placeholder="Name">
+    <input type="text" class="input" th:name="firstName" placeholder="Name">
     <div class="line-box">
       <div class="line"></div>
     </div>
@@ -66,7 +66,7 @@
 
   <label>
     <p class="label-txt">ENTER YOUR SURNAME</p>
-    <input type="text" class="input" th:name="sername" placeholder="Username">
+    <input type="text" class="input" th:name="lastName" placeholder="Username">
     <div class="line-box">
       <div class="line"></div>
     </div>
@@ -81,11 +81,20 @@
   </label>
   <label>
     <p class="label-txt">ENTER YOUR PHONE NUMBER</p>
-    <input type="text" class="input" th:name="phone" placeholder="Phone">
+    <input type="text" class="input" th:name="telNo" placeholder="Phone">
     <div class="line-box">
       <div class="line"></div>
     </div>
   </label>
+
+  <label>
+    <p class="label-txt">ENTER YOUR USERNAME</p>
+    <input type="text" class="input" th:name="username" placeholder="Username">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+
   <label>
     <p class="label-txt">ENTER YOUR PASSWORD</p>
     <input type="password" class="input" id="exampleInputPassword1 " placeholder="Password" th:name="password">

@@ -34,7 +34,11 @@ public class ProductOwner {
     private String lastName;
     private String telNo;
     private String email;
-    private String address;
+
+    private String companyName;
+
+    private String companyAddress;
+
     private final String role = "PO";
 
     public String getPoID() {
@@ -93,11 +97,31 @@ public class ProductOwner {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
+    public String getUUID() {
+        return UUID;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getCompanyAddress() {
+        return companyAddress;
+    }
+
+    public void setCompanyAddress(String companyAddress) {
+        this.companyAddress = companyAddress;
+    }
+
+    public String getRole() {
+        return role;
     }
 }
