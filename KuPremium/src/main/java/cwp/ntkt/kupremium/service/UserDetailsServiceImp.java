@@ -1,6 +1,5 @@
 package cwp.ntkt.kupremium.service;
 
-import cwp.ntkt.kupremium.model.ProductOwner;
 import cwp.ntkt.kupremium.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +24,9 @@ public class UserDetailsServiceImp implements UserDetailsService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public void addUser(ProductOwner productOwner){
+    public void addUser(User user){
         String url = "http://localhost:8090/user";
-        restTemplate.postForObject(url, productOwner, ProductOwner.class);
+        restTemplate.postForObject(url, user, User.class);
     }
 
     private User user;

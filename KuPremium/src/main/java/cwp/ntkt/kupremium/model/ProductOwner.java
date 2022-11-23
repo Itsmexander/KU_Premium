@@ -22,10 +22,12 @@ public class ProductOwner {
             name = "po_seq",
             strategy = "cwp.ntkt.kupremium.service.StringPrefixedSequenceIdGenerator",
             parameters = {
-                    @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
+                    @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "50"),
                     @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "PO"),
                     @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%04d") })
     private String poID;
+    @GeneratedValue
+    private String UUID;
     private String username;
     private String password;
     private String firstName;
@@ -33,6 +35,7 @@ public class ProductOwner {
     private String telNo;
     private String email;
     private String address;
+    private final String role = "ProductOwner";
 
     public String getPoID() {
         return poID;

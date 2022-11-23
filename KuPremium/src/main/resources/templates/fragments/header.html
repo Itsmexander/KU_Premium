@@ -49,7 +49,7 @@
 <!--                <li class="nav-item">-->
 <!--                </li>-->
                 <li class="nav-item">
-                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px ;font-weight: bold" th:href="@{/}">Home</a>
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px ;font-weight: bold" th:href="@{/home}">Home</a>
                 </li>
 
                 <div sec:authorize="isAnonymous()">
@@ -59,15 +59,15 @@
                 </div>
 
                 <li sec:authorize="hasRole('ADMIN')" class="nav-item">
-                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/cakes}">Product</a>
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/products}">Product</a>
                 </li>
                 <li sec:authorize="hasRole('USER')" class="nav-item">
-                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/cakes}">Product</a>
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/products}">Product</a>
                 </li>
 
                 <div sec:authorize="hasRole('ADMIN')">
                     <li class="nav-item">
-                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/cakes/data}">Add-Data</a>
+                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/products/add}">Add-Data</a>
                     </li>
                 </div>
 

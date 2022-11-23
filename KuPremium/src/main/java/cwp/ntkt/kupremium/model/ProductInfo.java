@@ -5,32 +5,34 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class ProductInfo {
+public class ProductInfo implements Serializable {
     @Id
-    private String pID;
+    private UUID pID;
     private String productName;
     private String productCategory;
     private double price;
+    @Id
     private String poID;
     private String productDescription;
     private String productAttrib;
     private String productUsageGuideline;
     private String productIngredients;
-    private String productQuantity;
+    private int productQuantity;
     private String productSize;
     private String productVolume;
     private String productWeight;
 
-    public String getpID() {
+    public UUID getpID() {
         return pID;
     }
 
-    public void setpID(String pID) {
+    public void setpID(UUID pID) {
         this.pID = pID;
     }
 
@@ -98,11 +100,11 @@ public class ProductInfo {
         this.productIngredients = productIngredients;
     }
 
-    public String getProductQuantity() {
+    public int getProductQuantity() {
         return productQuantity;
     }
 
-    public void setProductQuantity(String productQuantity) {
+    public void setProductQuantity(int productQuantity) {
         this.productQuantity = productQuantity;
     }
 

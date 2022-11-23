@@ -8,13 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.UUID;
 
-@Data
-@NoArgsConstructor
-@Entity
+
 public class ProductPic{
-    @Id
-    @GeneratedValue
+
     private UUID uuid;
+
     private String pID;
     private String picID;
     private String pictureFilePath;
