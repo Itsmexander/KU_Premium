@@ -4,10 +4,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties("rr-storage")
-public class RelatedResearchStorageProperties {
+@ConfigurationProperties("ea-storage")
+public class EmbedAudioStorageProperties {
 
-	private String location = "../KU_Premium/Related_Research";
+	private String location = "../KU_Premium/Embed_Audio_Embed_Video";
 
 	public String getLocation() {
 		return location;

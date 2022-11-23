@@ -27,7 +27,7 @@ public class PODetailServiceImp implements UserDetailsService {
 
     public void addUser(ProductOwner productOwner){
         String url = "http://localhost:8090/po";
-        restTemplate.postForObject(url, productOwner, User.class);
+        restTemplate.postForObject(url, productOwner, ProductOwner.class);
     }
 
     private ProductOwner productOwner;

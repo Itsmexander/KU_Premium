@@ -26,8 +26,8 @@ public class SignupService {
 
     public void createUser(SignupDto user) {
         User record = modelMapper.map(user, User.class);
-        record.setFirstname(user.getFirstName());
-        record.setLastname(user.getLastName());
+        record.setFirstName(user.getFirstName());
+        record.setLastName(user.getLastName());
         record.setUsername(user.getUsername());
 
         String hashedPassword = passwordEncoder.encode(user.getPassword());

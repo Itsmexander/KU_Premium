@@ -4,10 +4,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties("rr-storage")
-public class RelatedResearchStorageProperties {
+@ConfigurationProperties("psev-storage")
+public class ProductStoryEmbedVideoStorageProperties {
 
-	private String location = "../KU_Premium/Related_Research";
+	private String location = "../KU_Premium/Product_Story_Embed_Video";
 
 	public String getLocation() {
 		return location;

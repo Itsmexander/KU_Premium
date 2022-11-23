@@ -4,10 +4,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties("rr-storage")
-public class RelatedResearchStorageProperties {
+@ConfigurationProperties("ftev-storage")
+public class FoodtracabilityEmbedVideoStorageProperties {
 
-	private String location = "../KU_Premium/Related_Research";
+	private String location = "../KU_Premium/Food_Traceability_Embed_Video";
 
 	public String getLocation() {
 		return location;

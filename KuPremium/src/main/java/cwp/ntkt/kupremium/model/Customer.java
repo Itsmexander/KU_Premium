@@ -14,9 +14,9 @@ import javax.persistence.*;
 public class Customer {
     // TODO: 20/11/2565 เชื่อม database ให้ครบ
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "cus_seq")
     @GenericGenerator(
-            name = "user_seq",
+            name = "cus_seq",
             strategy = "cwp.ntkt.kupremium.service.StringPrefixedSequenceIdGenerator",
             parameters = {
                     @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "50"),

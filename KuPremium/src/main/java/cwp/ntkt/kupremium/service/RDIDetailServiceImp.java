@@ -1,9 +1,9 @@
 package cwp.ntkt.kupremium.service;
 
-import cwp.ntkt.kupremium.model.RDI;
-import cwp.ntkt.kupremium.repository.PORepository;
 
+import cwp.ntkt.kupremium.model.RDI;
 import cwp.ntkt.kupremium.repository.RDIRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,8 +26,8 @@ public class RDIDetailServiceImp implements UserDetailsService {
     private RestTemplate restTemplate;
 
     public void addUser(RDI rdi){
-        String url = "http://localhost:8090/rdi";
-        restTemplate.postForObject(url, rdi, RDI.class);
+        String url = "http://localhost:8090/user";
+        restTemplate.postForObject(url,rdi, RDI.class);
     }
 
     private RDI rdi;
