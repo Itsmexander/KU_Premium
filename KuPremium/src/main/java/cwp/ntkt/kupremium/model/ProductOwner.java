@@ -35,7 +35,7 @@ public class ProductOwner {
     private String telNo;
     private String email;
     private String address;
-    private final String role = "ProductOwner";
+    private final String role = "PO";
 
     public String getPoID() {
         return poID;

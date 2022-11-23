@@ -1,9 +1,9 @@
 package cwp.ntkt.kupremium.service;
 
-import cwp.ntkt.kupremium.model.ProductOwner;
-import cwp.ntkt.kupremium.model.User;
+import cwp.ntkt.kupremium.model.RDI;
 import cwp.ntkt.kupremium.repository.PORepository;
 
+import cwp.ntkt.kupremium.repository.RDIRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,50 +18,50 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class PODetailServiceImp implements UserDetailsService {
+public class RDIDetailServiceImp implements UserDetailsService {
     @Autowired
-    private PORepository poRepository;
+    private RDIRepository rdiRepository;
 
     @Autowired
     private RestTemplate restTemplate;
 
-    public void addUser(ProductOwner productOwner){
-        String url = "http://localhost:8090/ProductOwner";
-        restTemplate.postForObject(url, productOwner, User.class);
+    public void addUser(RDI rdi){
+        String url = "http://localhost:8090/rdi";
+        restTemplate.postForObject(url, rdi, RDI.class);
     }
 
-    private ProductOwner productOwner;
-    public List<ProductOwner> getAll(){
-        String url = "http://localhost:8090/ProductOwner";
-        ResponseEntity<ProductOwner[]> response = restTemplate.getForEntity(url, ProductOwner[].class);
-        ProductOwner[] productOwners = response.getBody();
-        return Arrays.asList(productOwners);
+    private RDI rdi;
+    public List<RDI> getAll(){
+        String url = "http://localhost:8090/user";
+        ResponseEntity<RDI[]> response = restTemplate.getForEntity(url, RDI[].class);
+        RDI[] rdi = response.getBody();
+        return Arrays.asList(rdi);
     }
 
     public void setLoginUser(String name){
         for(int i = 0 ; i <this.getAll().size();i++){
             if(name.equals(this.getAll().get(i).getUsername())){
-                productOwner = this.getAll().get(i);
+                rdi = this.getAll().get(i);
             }
         }
     }
-    public ProductOwner getUser(){
-        return productOwner;
+    public RDI getUser(){
+        return rdi;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        ProductOwner productOwner = poRepository.findByUsername(username);
+        RDI rdi = rdiRepository.findByUsername(username);
 
-        if (productOwner == null) {
+        if (rdi == null) {
             throw new UsernameNotFoundException("Could not find user");
         }
 
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(productOwner.getRole()));
+        authorities.add(new SimpleGrantedAuthority(rdi.getRole()));
 
         return new org.springframework.security.core.userdetails.User(
-                productOwner.getUsername(), productOwner.getPassword(), authorities);
+                rdi.getUsername(), rdi.getPassword(), authorities);
     }
 }

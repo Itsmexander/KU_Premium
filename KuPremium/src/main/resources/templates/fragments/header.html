@@ -49,7 +49,7 @@
 <!--                <li class="nav-item">-->
 <!--                </li>-->
                 <li class="nav-item">
-                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px ;font-weight: bold" th:href="@{/home}">Home</a>
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px ;font-weight: bold" th:href="@{/}">Home</a>
                 </li>
 
                 <div sec:authorize="isAnonymous()">
@@ -58,29 +58,29 @@
                     </li>
                 </div>
 
-                <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                <li sec:authorize="hasRole('PO')" class="nav-item">
                     <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/products}">Product</a>
                 </li>
                 <li sec:authorize="hasRole('USER')" class="nav-item">
                     <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/products}">Product</a>
                 </li>
 
-                <div sec:authorize="hasRole('ADMIN')">
+                <div sec:authorize="hasRole('PO')">
                     <li class="nav-item">
-                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/products/add}">Add-Data</a>
+                        <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/products/data_add}">Add-Data</a>
                     </li>
                 </div>
 
-                <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                <li sec:authorize="hasRole('PO')" class="nav-item">
                     <a class="nav-link" style="color: whitesmoke ;font-size: 20px;font-weight: bold" th:href="@{/cart}">Checklist</a>
                 </li>
 
-                <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                <li sec:authorize="hasRole('PO')" class="nav-item">
                     <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/order}">Check-Status</a>
                 </li>
 
                 <li sec:authorize="hasRole('USER')" class="nav-item">
-                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/cakes/check356}">FDA</a>
+                    <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/product/check356}">FDA</a>
                 </li>
                 <li sec:authorize="hasRole('USER')" class="nav-item">
                     <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/cakes/inspection}">Inspection-Data</a>
@@ -107,7 +107,7 @@
                     </li>
                 </div>
 
-                <div sec:authorize="hasAnyRole('ADMIN','USER')">
+                <div sec:authorize="hasAnyRole('PO','USER')">
                     <!--                    hasAnyAuthority('ADMIN')-->
                     <li class="nav-item">
                         <a class="nav-link" style="color: whitesmoke ;font-size: 20px; font-weight: bold" th:href="@{/logout}">Logout</a>

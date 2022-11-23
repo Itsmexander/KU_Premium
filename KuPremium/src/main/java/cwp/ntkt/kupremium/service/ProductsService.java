@@ -19,30 +19,30 @@ public class ProductsService {
     private static RestTemplate restTemplate;
 
     public List<ProductInfo> getAll(){
-        String url = "http://localhost:8090/cakes";
+        String url = "http://localhost:8090/ProductInfo";
         ResponseEntity<ProductInfo[]> response = restTemplate.getForEntity(url, ProductInfo[].class);
-        ProductInfo[] cakes = response.getBody();
-        return Arrays.asList(cakes);
+        ProductInfo[] productInfos= response.getBody();
+        return Arrays.asList(productInfos);
     }
 
     public List<Cart> getOrder(){
-        String url = "http://localhost:8090/cakes";
+        String url = "http://localhost:8090/ProductInfo";
         ResponseEntity<ProductInfo[]> response = restTemplate.getForEntity(url, ProductInfo[].class);
-        ProductInfo[] cakes = response.getBody();
+        ProductInfo[] productInfos = response.getBody();
         ArrayList orders = new ArrayList();
-        for(int i = 0 ; i < cakes.length; i++){
-            orders.add(new Cart(cakes[i], 0));
+        for(int i = 0 ; i < productInfos.length; i++){
+            orders.add(new Cart(productInfos[i], 0));
         }
         return orders;
     }
 
     public void addCakes(ProductInfo products){
-        String url = "http://localhost:8090/cakes";
+        String url = "http://localhost:8090/ProductInfo";
         restTemplate.postForObject(url, products, ProductInfo.class );
     }
 
     public static ProductInfo getOneById(UUID id){
-        String url = "http://localhost:8090/cakes/" + id;
+        String url = "http://localhost:8090/ProductInfo/" + id;
         ResponseEntity<ProductInfo> response =
                 restTemplate.getForEntity(url, ProductInfo.class);
         ProductInfo products = response.getBody();
@@ -50,7 +50,7 @@ public class ProductsService {
     }
 
     public void update(ProductInfo products){
-        String url = "http://localhost:8090/cakes/" + products.getpID();
+        String url = "http://localhost:8090/ProductInfo/" + products.getpID();
         restTemplate.put(url, products, ProductInfo.class);
     }
 
@@ -58,7 +58,7 @@ public class ProductsService {
         for (int i = 0 ; i < cart.size(); i++){
             ProductInfo update = this.getOneById(cart.get(i).getCakes().getpID());
             update.setProductQuantity(update.getProductQuantity()-cart.get(i).getQuantity());
-            String url = "http://localhost:8090/cakes/" + update.getpID();
+            String url = "http://localhost:8090/ProductInfo/" + update.getpID();
             if(update.getProductQuantity() != 0){
                 restTemplate.put(url, update, ProductInfo.class);
             }

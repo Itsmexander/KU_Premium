@@ -19,7 +19,7 @@ public class SignupController {
     @Autowired
     private SignupService signupService;
 
-    @GetMapping("/signup")
+    @GetMapping("/singup")
     public String getSignupPage(SignupDto user) {
         return "signup"; // return signup.html
     }

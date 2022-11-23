@@ -2,14 +2,15 @@ package cwp.ntkt.kupremium.controller;
 
 import cwp.ntkt.kupremium.dto.SignupDto;
 import cwp.ntkt.kupremium.model.ProductInfo;
+import cwp.ntkt.kupremium.service.PODetailServiceImp;
 import cwp.ntkt.kupremium.service.ProductsService;
 import cwp.ntkt.kupremium.service.UserDetailsServiceImp;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+//import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.security.core.Authentication;
 import java.util.UUID;
 
 @Controller
@@ -18,7 +19,7 @@ public class ProductController {
         @Autowired
         private ProductsService productsService;
         @Autowired
-        private UserDetailsServiceImp userDetailsServiceImp;
+        private PODetailServiceImp poDetailServiceImp;
 
 
         @GetMapping("/edit/{id}")
@@ -37,7 +38,7 @@ public class ProductController {
         @GetMapping
         public String getCakes(Model model, Authentication authentication)
         {
-            userDetailsServiceImp.setLoginUser(authentication.getDeclaringClass().getName()); //***
+            poDetailServiceImp.setLoginUser(authentication.getName()); //***
             model.addAttribute("cakes", productsService.getAll());
             return "cakes";
         }
@@ -54,6 +55,31 @@ public class ProductController {
             productsService.addCakes(products);
 
             return "redirect:/cakes";
+        }
+
+        @GetMapping("/certification")
+        public String getCertificatePage() {
+            return "certificate-add"; // return signup.html
+        }
+
+        @GetMapping("/related_Research")
+        public String getRelatedResearchPage() {
+            return "related-Research"; // return signup.html
+        }
+
+        @GetMapping("/product_story")
+        public String getProductStoryPage() {
+            return "product-story"; // return signup.html
+        }
+
+        @GetMapping("/food")
+        public String getFoodPage() {
+            return "food-traceability"; // return signup.html
+        }
+
+        @GetMapping("/audio")
+        public String getAudioPage() {
+            return "audio"; // return signup.html
         }
 
         @GetMapping("/check356")
@@ -82,6 +108,11 @@ public class ProductController {
         @GetMapping("/audit_results")
         public String getAuditPage() {
             return "audit-results"; // return signup.html
+        }
+
+        @GetMapping("/data_add")
+        public String getDataAddPage() {
+            return "data-add"; // return signup.html
         }
 
 //        @GetMapping("/register_customer")

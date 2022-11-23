@@ -41,28 +41,28 @@
                             <div class="card-body">
                                 <img height="128" th:src="${'../../images/'+ cakes.name +'.png'}" width="128">
 <!--                                        alt="" class="r img-responsive mt-2"-->
-                                <h5 class="card-title" th:text="${cakes.getName()}">Id</h5>
+                                <h5 class="card-title" th:text="${cakes.getProductName}">Id</h5>
                                 <label></label>
-                                <p class="card-text" style="text-align:left;" th:text="${'Product Volume : ' + cakes.weight + ' ML'}">Weight</p>
-                                <p class="card-text" style="text-align:left;" th:text="${'Product Quantity : ' + cakes.amount + ' Pieces' }">Amount</p>
+                                <p class="card-text" style="text-align:left;" th:text="${'Product Volume : ' + cakes.productVolume + ' ML'}">Weight</p>
+                                <p class="card-text" style="text-align:left;" th:text="${'Product Quantity : ' + cakes.productQuantity + ' Pieces' }">Amount</p>
                                 <p class="card-text" style="text-align:left;" th:text="${'Product Price : ' + cakes.price + ' Baht'}" th:value="${cakes.price}">Price</p>
 
 <!--                                <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-light increase" th:onclick="decrementValue([[${cakes}]])"  value="-" style="border-style: hidden">-</button>-->
 <!--                                <input  sec:authorize="hasRole('ADMIN')" type="number" style="text-align: center;border-style: hidden;background: none; position: center"   th:id="${cakes.id+'increase'}"  value="0" />-->
 <!--                                <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-light" th:onclick="incrementValue([[${cakes}]])"  value="+" style="border-style: hidden; margin-left: -15px">+</button>-->
-                                <input hidden type="text" th:name="name" th:value="${cakes.id}">
-                                <input hidden type="number" style="text-align: center;border-style: hidden;background:none;"  th:id="${cakes.id+'increase2'}" th:name="num" value="0" />
+                                <input hidden type="text" th:name="name" th:value="${cakes.pID}">
+                                <input hidden type="number" style="text-align: center;border-style: hidden;background:none;"  th:id="${cakes.pID+'increase2'}" th:name="num" value="0" />
                             </div>
                         <div>
 
                                 <!-- ปุ่ม Edit สินค้า -->
 <!--                                <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.id})}" ><button type="button" class="btn btn-danger">Edit Product</button></a>-->
 
-                                <a sec:authorize="hasRole('ADMIN')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.id})}" ><button type="button" class="btn btn-danger">Product information</button></a>
-                                <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.id})}" ><button type="button" class="btn btn-danger">Product information</button></a>
+                                <a sec:authorize="hasRole('PO')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.pID})}" ><button type="button" class="btn btn-danger">Product information</button></a>
+                                <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.pID})}" ><button type="button" class="btn btn-danger">Product information</button></a>
 
 <!--                                <button sec:authorize="hasRole('ADMIN')" class="btn btn-danger" style="margin-top: 10px" type="button" th:onclick="value=1" >Check Product Standard</button>-->
-                                <button sec:authorize="hasRole('ADMIN')" class="btn btn-danger" type="submit">Add Check</button>
+                                <button sec:authorize="hasRole('PO')" class="btn btn-danger" type="submit">Add Check</button>
 
 <!--                                <li sec:authorize="hasRole('ADMIN')" class="nav-item">-->
 <!--                                    <a class="nav-link" style="color: #dc3545" th:href="@{/cart}">Check Product Standard</a>-->

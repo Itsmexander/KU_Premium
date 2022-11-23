@@ -28,10 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login*","/", "/home","/rings","/css/**","/js/**","/images/**","/order",
+                .antMatchers("/login*","/", "/home","/cakes","/css/**","/js/**","/images/**","/order",
                         "/register","/contact","/detail","/login_customer","/login_employee","/login_rdi","/register_customer",
                         "/register_employee","/register_rdi").permitAll()
-                .antMatchers("/rings/**","order/**").hasRole("ADMIN")
+                .antMatchers("/cakes/**","order/**").hasRole("PO")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -45,19 +45,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception
     {
+//        auth.jdbcAuthentication()
+//                .dataSource(dataSource)
+//                .usersByUsernameQuery(
+//                        "SELECT username, password, 'true' FROM user WHERE username=?")
+//                .authoritiesByUsernameQuery(
+//                        "SELECT username, 'ROLE_USER' FROM user WHERE username=?");
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery(
-                        "SELECT username, password, 'true' FROM users WHERE username=?")
+                        "SELECT username, password, 'true' FROM product_owner WHERE username=?")
                 .authoritiesByUsernameQuery(
-                        "SELECT username, 'ROLE_USER' FROM users WHERE username=?");
+                        "SELECT username, 'PO' FROM product_owner WHERE username=?");
+
 
         auth.inMemoryAuthentication()
                 .withUser("user").password(passwordEncoder().encode("user")).roles("USER")
                 .and()
                 .withUser("user1").password(passwordEncoder().encode("user1")).roles("USER")
                 .and()
-                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN");
+                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
+                .and()
+                .withUser("po").password(passwordEncoder().encode("poTest")).roles("PO")
+                .and()
+                .withUser("rdi").password(passwordEncoder().encode("rdiTest")).roles("RDI");
+
     }
     @Bean
     public PasswordEncoder passwordEncoder() {
