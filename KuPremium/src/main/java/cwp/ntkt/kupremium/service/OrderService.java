@@ -38,7 +38,7 @@
 //        Order cakesOrder = new Order();
 //        cakesOrder = cake;
 //        cakesOrder.setUsername(userService.getUser().getUsername());
-//        cakesOrder.setCakes(cartService.getCart().toString());
+//        cakesOrder.setProductName(cartService.getCart().toString());
 //        cakesOrder.setStatus("Underpayment");
 //        restTemplate.postForObject(url, cakesOrder, Order.class);
 //    }

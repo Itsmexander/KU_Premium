@@ -25,7 +25,7 @@ public class ProductController {
         @GetMapping("/edit/{id}")
         public String getEditForm(@PathVariable UUID id, Model model) {
             ProductInfo products = productsService.getOneById(id);
-            model.addAttribute("cakes", products);
+            model.addAttribute("products", products);
             return "cakes-edit";
         }
 
@@ -39,7 +39,7 @@ public class ProductController {
         public String getCakes(Model model, Authentication authentication)
         {
             poDetailServiceImp.setLoginUser(authentication.getName()); //***
-            model.addAttribute("cakes", productsService.getAll());
+            model.addAttribute("products", productsService.getAll());
             return "cakes";
         }
 

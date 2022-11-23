@@ -36,18 +36,18 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="cake : ${carts}">
-      <td><img th:src=" ${'../../images/' + cake.getCakes.name+ '.png'} " width="100">
+    <tr th:each="products : ${carts}">
+      <td><img th:src=" ${'../../images/' + products.getCakes.name+ '.png'} " width="100">
       </img></td>
       <!--เพิ่มรหัสเจ้าของสินค้าด้วยฮับ-->
       <td text="P0000001"></td>
-      <td th:text="${cake.getCakes().name}"></td>
+      <td th:text="${products.getCakes().productName}"></td>
       <!--เพิ่มรหัสเจ้าของสินค้าด้วยฮับ-->
       <td text="T0000001"></td>
-      <td th:text="${cake.getCakes().weight}"></td>
-      <td th:text="${cake.getCakes().price}"></td>
+      <td th:text="${products.getCakes().productVolume}"></td>
+      <td th:text="${products.getCakes().price}"></td>
       <td>
-        <a th:href="@{/cart/remove/{id}(id=${cake.getCakes().id})}">
+        <a th:href="@{/cart/remove/{id}(id=${products.getCakes().pID})}">
           <button type="button" class="btn btn-danger">Delete</button>
         </a>
       </td>
@@ -66,7 +66,7 @@
     <a  class="btn btn-danger" th:href="@{/order/address}" type="submit">Next</a>
   </div>
   <div>
-    <a class="btn btn-danger" th:href="@{/cakes}">Back to product page</a>
+    <a class="btn btn-danger" th:href="@{/products}">Back to product page</a>
   </div>
 </div>
 </body>

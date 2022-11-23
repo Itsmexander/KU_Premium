@@ -23,57 +23,57 @@
 
 <div class="input-group mb-3 d-flex justify-content-center">
     <div class="input-group-append">
-        <div class="topNav">
-            <div class="search-container" style="margin-top: 20px; text-align: end">
-                <form action="/action_page.php">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit">Submit<i class="fa fa-search"></i></button>
-                </form>
-            </div>
-        </div>
+<!--        <div class="topNav">-->
+<!--            <div class="search-container" style="margin-top: 20px; text-align: end">-->
+<!--                <form action="/action_page.php">-->
+<!--                    <input type="text" placeholder="Search.." name="search">-->
+<!--                    <button type="submit">Submit<i class="fa fa-search"></i></button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="container" style="margin-top:10px;">
-            <table style="width: 100%">
-                <tbody>
-                <form th:action="@{/cart}" method="post" th:each="cakes : ${cakes}"}>
-                    <tr>
-                        <div class="card custom-card text-center mr-2 mt-2 ml-2 mb-2"
-                             style="width: 20rem; display: inline-block; margin-right: 30px; border-radius: 25px; background-color: #D9D9D9; padding: 20px; margin-bottom: 30px">
-                            <div class="card-body">
-                                <img height="128" th:src="${'../../images/'+ cakes.name +'.png'}" width="128">
-<!--                                        alt="" class="r img-responsive mt-2"-->
-                                <h5 class="card-title" th:text="${cakes.getProductName}">Id</h5>
-                                <label></label>
-                                <p class="card-text" style="text-align:left;" th:text="${'Product Volume : ' + cakes.productVolume + ' ML'}">Weight</p>
-                                <p class="card-text" style="text-align:left;" th:text="${'Product Quantity : ' + cakes.productQuantity + ' Pieces' }">Amount</p>
-                                <p class="card-text" style="text-align:left;" th:text="${'Product Price : ' + cakes.price + ' Baht'}" th:value="${cakes.price}">Price</p>
+<!--            <table style="width: 100%">-->
+<!--                <tbody>-->
+<!--                <form th:action="@{/cart}" method="post" th:each="products : ${products}"}>-->
+<!--                    <tr>-->
+<!--                        <div class="card custom-card text-center mr-2 mt-2 ml-2 mb-2"-->
+<!--                             style="width: 20rem; display: inline-block; margin-right: 30px; border-radius: 25px; background-color: #D9D9D9; padding: 20px; margin-bottom: 30px">-->
+<!--                            <div class="card-body">-->
+<!--                                <img height="128" th:src="${'../../images/'+ products.productName +'.png'}" width="128">-->
+<!--&lt;!&ndash;                                        alt="" class="r img-responsive mt-2"&ndash;&gt;-->
+<!--                                <h5 class="card-title" th:text="${products.getProductName}">Id</h5>-->
+<!--                                <label></label>-->
+<!--                                <p class="card-text" style="text-align:left;" th:text="${'Product Volume : ' + products.productVolume + ' ML'}">Weight</p>-->
+<!--                                <p class="card-text" style="text-align:left;" th:text="${'Product Quantity : ' + products.productQuantity + ' Pieces' }">Amount</p>-->
+<!--                                <p class="card-text" style="text-align:left;" th:text="${'Product Price : ' + products.price + ' Baht'}" th:value="${products.price}">Price</p>-->
 
-<!--                                <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-light increase" th:onclick="decrementValue([[${cakes}]])"  value="-" style="border-style: hidden">-</button>-->
-<!--                                <input  sec:authorize="hasRole('ADMIN')" type="number" style="text-align: center;border-style: hidden;background: none; position: center"   th:id="${cakes.id+'increase'}"  value="0" />-->
-<!--                                <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-light" th:onclick="incrementValue([[${cakes}]])"  value="+" style="border-style: hidden; margin-left: -15px">+</button>-->
-                                <input hidden type="text" th:name="name" th:value="${cakes.pID}">
-                                <input hidden type="number" style="text-align: center;border-style: hidden;background:none;"  th:id="${cakes.pID+'increase2'}" th:name="num" value="0" />
-                            </div>
-                        <div>
+<!--&lt;!&ndash;&lt;!&ndash;                                <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-light increase" th:onclick="decrementValue([[${cakes}]])"  value="-" style="border-style: hidden">-</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <input  sec:authorize="hasRole('ADMIN')" type="number" style="text-align: center;border-style: hidden;background: none; position: center"   th:id="${cakes.id+'increase'}"  value="0" />&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <button sec:authorize="hasRole('ADMIN')" type="button" class="btn btn-light" th:onclick="incrementValue([[${cakes}]])"  value="+" style="border-style: hidden; margin-left: -15px">+</button>&ndash;&gt;&ndash;&gt;-->
+<!--                                <input hidden type="text" th:name="name" th:value="${products.pID}">-->
+<!--                                <input hidden type="number" style="text-align: center;border-style: hidden;background:none;"  th:id="${products.pID+'increase2'}" th:name="num" value="0" />-->
+<!--                            </div>-->
+<!--                        <div>-->
 
-                                <!-- ปุ่ม Edit สินค้า -->
-<!--                                <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.id})}" ><button type="button" class="btn btn-danger">Edit Product</button></a>-->
+<!--&lt;!&ndash;                                &lt;!&ndash; ปุ่ม Edit สินค้า &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.id})}" ><button type="button" class="btn btn-danger">Edit Product</button></a>&ndash;&gt;&ndash;&gt;-->
 
-                                <a sec:authorize="hasRole('PO')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.pID})}" ><button type="button" class="btn btn-danger">Product information</button></a>
-                                <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/cakes/edit/{id}(id=${cakes.pID})}" ><button type="button" class="btn btn-danger">Product information</button></a>
+<!--                                <a sec:authorize="hasRole('PO')" style="text-align: center" th:href="@{/products/edit/{id}(id=${products.pID})}" ><button type="button" class="btn btn-danger">Product information</button></a>-->
+<!--                                <a sec:authorize="hasRole('USER')" style="text-align: center" th:href="@{/products/edit/{id}(id=${products.pID})}" ><button type="button" class="btn btn-danger">Product information</button></a>-->
 
-<!--                                <button sec:authorize="hasRole('ADMIN')" class="btn btn-danger" style="margin-top: 10px" type="button" th:onclick="value=1" >Check Product Standard</button>-->
-                                <button sec:authorize="hasRole('PO')" class="btn btn-danger" type="submit">Add Check</button>
+<!--&lt;!&ndash;&lt;!&ndash;                                <button sec:authorize="hasRole('ADMIN')" class="btn btn-danger" style="margin-top: 10px" type="button" th:onclick="value=1" >Check Product Standard</button>&ndash;&gt;&ndash;&gt;-->
+<!--                                <button sec:authorize="hasRole('PO')" class="btn btn-danger" type="submit">Add Check</button>-->
 
-<!--                                <li sec:authorize="hasRole('ADMIN')" class="nav-item">-->
-<!--                                    <a class="nav-link" style="color: #dc3545" th:href="@{/cart}">Check Product Standard</a>-->
-<!--                                </li>-->
+<!--&lt;!&ndash;                                <li sec:authorize="hasRole('ADMIN')" class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <a class="nav-link" style="color: #dc3545" th:href="@{/cart}">Check Product Standard</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </li>&ndash;&gt;-->
 
-                            </div>
-                        </div>
-                    </tr>
-                </form>
-                </tbody>
-            </table>
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </tr>-->
+<!--                </form>-->
+<!--                </tbody>-->
+<!--            </table>-->
         </div>
     </div>
 </div>

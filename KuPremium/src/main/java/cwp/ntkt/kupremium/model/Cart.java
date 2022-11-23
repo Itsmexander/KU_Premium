@@ -30,8 +30,11 @@ public class Cart {
         this.quantity = quantity;
     }
 
-    public void setCakes(ProductInfo cakes) {
-        this.products = cakes;
-    }
+//    public void setCakes(ProductInfo cakes) {
+//        this.products = cakes;
+//    }
 
+    public void setProducts(ProductInfo products) {
+        this.products = products;
+    }
 }

@@ -17,7 +17,6 @@ public class ProductInfo implements Serializable {
     private String productName;
     private String productCategory;
     private double price;
-    @Id
     private String poID;
     private String productDescription;
     private String productAttrib;
@@ -34,6 +33,22 @@ public class ProductInfo implements Serializable {
 
     public void setpID(UUID pID) {
         this.pID = pID;
+    }
+
+    public ProductInfo(UUID pID, String productName, String productCategory, double price, String poID, String productDescription, String productAttrib, String productUsageGuideline, String productIngredients, int productQuantity, String productSize, String productVolume, String productWeight) {
+        this.pID = pID;
+        this.productName = productName;
+        this.productCategory = productCategory;
+        this.price = price;
+        this.poID = poID;
+        this.productDescription = productDescription;
+        this.productAttrib = productAttrib;
+        this.productUsageGuideline = productUsageGuideline;
+        this.productIngredients = productIngredients;
+        this.productQuantity = productQuantity;
+        this.productSize = productSize;
+        this.productVolume = productVolume;
+        this.productWeight = productWeight;
     }
 
     public String getProductName() {

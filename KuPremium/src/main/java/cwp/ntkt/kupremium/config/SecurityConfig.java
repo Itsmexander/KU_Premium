@@ -55,8 +55,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .usersByUsernameQuery(
                         "SELECT username, password, 'true' FROM product_owner WHERE username=?")
+                .usersByUsernameQuery(
+                        "SELECT username, password, 'true' FROM rdi WHERE username=?")
                 .authoritiesByUsernameQuery(
-                        "SELECT username, 'PO' FROM product_owner WHERE username=?");
+                        "SELECT username, 'PO' FROM product_owner WHERE username=?")
+                .authoritiesByUsernameQuery(
+                        "SELECT username, 'USER' FROM rdi WHERE username=?");
 
 
         auth.inMemoryAuthentication()

@@ -18,7 +18,8 @@ public class CartService {
     private List<Cart> cart = new ArrayList<>();
 
     public void addCart(UUID id,Integer num){
-        cart.add(new Cart(ProductsService.getOneById(id), num));
+
+        cart.add(new Cart(productsService.getOneById(id), num));
     }
     public List<Cart> getCart() {
         return cart;

@@ -32,7 +32,7 @@ public class RDIDetailServiceImp implements UserDetailsService {
 
     private RDI rdi;
     public List<RDI> getAll(){
-        String url = "http://localhost:8090/user";
+        String url = "http://localhost:8090/rdi";
         ResponseEntity<RDI[]> response = restTemplate.getForEntity(url, RDI[].class);
         RDI[] rdi = response.getBody();
         return Arrays.asList(rdi);
