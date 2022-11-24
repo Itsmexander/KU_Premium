@@ -38,14 +38,16 @@ public class ProductController {
         return "redirect:/cakes";
     }
 
-    @GetMapping
+    @GetMapping("")
     public String getCakes(Model model, Authentication authentication)
     {
+        System.out.println("1111111111111111111111111111111111111111111");
         poDetailServiceImp.setLoginUser(authentication.getName()); //***
+        System.out.println("2222222222222222222222222222222222222222222");
         model.addAttribute("products", productsService.getAll());
+        System.out.println("3333333333333333333333333333333333333333+33");
         return "cakes";
     }
-
 //    @GetMapping
 //    public String getCakes(Model model, Authentication authentication)
 //    {

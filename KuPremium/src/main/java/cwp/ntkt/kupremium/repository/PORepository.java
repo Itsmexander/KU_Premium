@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface PORepository extends JpaRepository<ProductOwner, UUID> {
+public interface PORepository extends JpaRepository<ProductOwner, String> { //ถามแซนเรื่อง UUID
 
     // SELECT * FROM User WHERE username = ‘username in parameter’
     ProductOwner findByUsername(String username);

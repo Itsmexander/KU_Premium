@@ -26,8 +26,9 @@ public class ProductOwner {
                     @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "PO"),
                     @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%04d") })
     private String poID;
-    @GeneratedValue
-    private String UUID;
+
+//    @GeneratedValue
+//    private String UUID;
     private String username;
     private String password;
     private String firstName;
@@ -97,13 +98,13 @@ public class ProductOwner {
         this.email = email;
     }
 
-    public String getUUID() {
-        return UUID;
-    }
-
-    public void setUUID(String UUID) {
-        this.UUID = UUID;
-    }
+//    public String getUUID() {
+//        return UUID;
+//    }
+//
+//    public void setUUID(String UUID) {
+//        this.UUID = UUID;
+//    }
 
     public String getCompanyName() {
         return companyName;

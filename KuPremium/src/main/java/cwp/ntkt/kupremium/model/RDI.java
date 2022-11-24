@@ -27,8 +27,8 @@ public class RDI {
                     @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "R"),
                     @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d") })
     private String researcherID;
-    @GeneratedValue
-    private UUID uuid;
+//    @GeneratedValue
+//    private UUID uuid;
     private String username;
     private String password;
     private String firstName;

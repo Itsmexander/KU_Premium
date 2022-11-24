@@ -26,20 +26,22 @@ public class PODetailServiceImp implements UserDetailsService {
     private RestTemplate restTemplate;
 
     public void addUser(ProductOwner productOwner){
-        String url = "http://localhost:8090/productOwner";
+        String url = "http://localhost:8090/product_owner";
         restTemplate.postForObject(url, productOwner, ProductOwner.class);
     }
 
     private ProductOwner productOwner;
     public List<ProductOwner> getAll(){
-        String url = "http://localhost:8090/productOwner";
+        String url = "http://localhost:8090/product_owner";
         ResponseEntity<ProductOwner[]> response = restTemplate.getForEntity(url, ProductOwner[].class);
         ProductOwner[] productOwners = response.getBody();
         return Arrays.asList(productOwners);
     }
 
     public void setLoginUser(String name){
+        System.out.println("9999999999999999999999999999999");
         for(int i = 0 ; i <this.getAll().size();i++){
+            System.out.println("9999999999999999999999999999");
             if(name.equals(this.getAll().get(i).getUsername())){
                 productOwner = this.getAll().get(i);
             }
