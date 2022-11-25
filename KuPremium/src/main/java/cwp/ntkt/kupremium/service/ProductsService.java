@@ -16,17 +16,21 @@ import java.util.UUID;
 @Service
 public class ProductsService {
     @Autowired
-    private static RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     public List<ProductInfo> getAll(){
-        String url = "http://localhost:8090/products";
+        System.out.println("888888888888888888888888888888888888888888");
+        String url = "http://localhost:8090/productInfo";
+        System.out.println("888888888888888888888888888888888888888888");
         ResponseEntity<ProductInfo[]> response = restTemplate.getForEntity(url, ProductInfo[].class);
-        ProductInfo[] productInfos= response.getBody();
-        return Arrays.asList(productInfos);
+        System.out.println("888888888888888888888888888888888888888888");
+        ProductInfo[] productInfo= response.getBody();
+        System.out.println("888888888888888888888888888888888888888888");
+        return Arrays.asList(productInfo);
     }
 
     public List<Cart> getOrder(){
-        String url = "http://localhost:8090/products";
+        String url = "http://localhost:8090/productInfo";
         ResponseEntity<ProductInfo[]> response = restTemplate.getForEntity(url, ProductInfo[].class);
         ProductInfo[] productInfos = response.getBody();
         ArrayList orders = new ArrayList();
@@ -37,12 +41,12 @@ public class ProductsService {
     }
 
     public void addCakes(ProductInfo products){
-        String url = "http://localhost:8090/products";
+        String url = "http://localhost:8090/productInfo";
         restTemplate.postForObject(url, products, ProductInfo.class );
     }
 
-    public static ProductInfo getOneById(UUID id){
-        String url = "http://localhost:8090/products/" + id;
+    public ProductInfo getOneById(UUID id){
+        String url = "http://localhost:8090/productInfo/" + id;
         ResponseEntity<ProductInfo> response =
                 restTemplate.getForEntity(url, ProductInfo.class);
         ProductInfo products = response.getBody();
@@ -50,7 +54,7 @@ public class ProductsService {
     }
 
     public void update(ProductInfo products){
-        String url = "http://localhost:8090/products/" + products.getpID();
+        String url = "http://localhost:8090/productInfo/" + products.getpID();
         restTemplate.put(url, products, ProductInfo.class);
     }
 
@@ -58,7 +62,7 @@ public class ProductsService {
         for (int i = 0 ; i < cart.size(); i++){
             ProductInfo update = this.getOneById(cart.get(i).getCakes().getpID());
             update.setProductQuantity(update.getProductQuantity()-cart.get(i).getQuantity());
-            String url = "http://localhost:8090/products/" + update.getpID();
+            String url = "http://localhost:8090/productInfo/" + update.getpID();
             if(update.getProductQuantity() != 0){
                 restTemplate.put(url, update, ProductInfo.class);
             }

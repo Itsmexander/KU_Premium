@@ -1,9 +1,11 @@
 package cwp.ntkt.kupremium.service;
 
-
+import cwp.ntkt.kupremium.model.Customer;
 import cwp.ntkt.kupremium.model.RDI;
-import cwp.ntkt.kupremium.repository.RDIRepository;
+import cwp.ntkt.kupremium.model.User;
+import cwp.ntkt.kupremium.repository.PORepository;
 
+import cwp.ntkt.kupremium.repository.RDIRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,24 +20,25 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class RDIDetailServiceImp implements UserDetailsService {
+public class RDIDetailServiceImp{
+
     @Autowired
     private RDIRepository rdiRepository;
 
     @Autowired
     private RestTemplate restTemplate;
 
-    public void addUser(RDI rdi){
-        String url = "http://localhost:8090/user";
-        restTemplate.postForObject(url,rdi, RDI.class);
-    }
-
     private RDI rdi;
     public List<RDI> getAll(){
         String url = "http://localhost:8090/rdi";
         ResponseEntity<RDI[]> response = restTemplate.getForEntity(url, RDI[].class);
-        RDI[] rdi = response.getBody();
-        return Arrays.asList(rdi);
+        RDI[] rdis = response.getBody();
+        return Arrays.asList(rdis);
+    }
+
+    public void addUser(RDI rdi){
+        String url = "http://localhost:8090/rdi";
+        restTemplate.postForObject(url, rdi, RDI.class);
     }
 
     public void setLoginUser(String name){
@@ -49,19 +52,19 @@ public class RDIDetailServiceImp implements UserDetailsService {
         return rdi;
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username)
-            throws UsernameNotFoundException {
-        RDI rdi = rdiRepository.findByUsername(username);
-
-        if (rdi == null) {
-            throw new UsernameNotFoundException("Could not find user");
-        }
-
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(rdi.getRole()));
-
-        return new org.springframework.security.core.userdetails.User(
-                rdi.getUsername(), rdi.getPassword(), authorities);
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String username)
+//            throws UsernameNotFoundException {
+//                RDI rdi = rdiRepository.findByUsername(username);
+//
+//                if(rdi == null) {
+//                    throw new UsernameNotFoundException("Could not find user");
+//                }
+//
+//                List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+//                authorities.add(new SimpleGrantedAuthority(rdi.getRole()));
+//
+//                return new org.springframework.security.core.userdetails.User(
+//                        rdi.getUsername(), rdi.getPassword(), authorities);
+//    }
 }

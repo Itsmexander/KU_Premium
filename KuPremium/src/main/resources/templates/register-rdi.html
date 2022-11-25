@@ -11,7 +11,7 @@
 <body>
 <div th:insert="fragments/header :: header"></div>
 
-<form th:action="@{/register}" method="post">
+<form th:action="@{/register_rdi}" method="post">
   <h2 class="text-center" style="font-weight: bold; text-align:center; color: #dc3545 ;margin-bottom: 50px; padding-top: 25px">Create a user account for the KU_RDI</h2>
   <h6 class="col text-center" style="margin-top: 0px; margin-bottom: 20px; color: #dc3545">CHOOSE YOUR ACCOUNT TYPE</h6>
 
@@ -53,9 +53,11 @@
     </div>
   </div>
 
+  <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+
   <label>
     <p class="label-txt">ENTER YOUR NAME</p>
-    <input type="text" class="input" th:name="name" placeholder="Name">
+    <input type="text" class="input" th:name="firstName" placeholder="Name">
     <div class="line-box">
       <div class="line"></div>
     </div>
@@ -63,7 +65,7 @@
 
   <label>
     <p class="label-txt">ENTER YOUR SURNAME</p>
-    <input type="text" class="input" th:name="sername" placeholder="Username">
+    <input type="text" class="input" th:name="lastName" placeholder="Username">
     <div class="line-box">
       <div class="line"></div>
     </div>
@@ -78,11 +80,20 @@
   </label>
   <label>
     <p class="label-txt">ENTER YOUR PHONE NUMBER</p>
-    <input type="text" class="input" th:name="phone" placeholder="Phone">
+    <input type="text" class="input" th:name="telNo" placeholder="Phone">
     <div class="line-box">
       <div class="line"></div>
     </div>
   </label>
+
+  <label>
+    <p class="label-txt">ENTER YOUR USERNAME</p>
+    <input type="text" class="input" th:name="username" placeholder="Username">
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+
   <label>
     <p class="label-txt">ENTER YOUR PASSWORD</p>
     <input type="password" class="input" id="exampleInputPassword1 " placeholder="Password" th:name="password">
